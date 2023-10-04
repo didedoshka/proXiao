@@ -14,6 +14,18 @@
 #define RED 2
 
 / {
+  behaviors {
+    skq: sticky_key_quick_release {
+      compatible = "zmk,behavior-sticky-key";
+      label = "STICKY_KEY_QUICK_RELEASE";
+      #binding-cells = <1>;
+      bindings = <&kp>;
+      release-after-ms = <1000>;
+      quick-release;
+      ignore-modifiers;
+    };
+  };
+
   keymap {
     compatible = "zmk,keymap";
 
@@ -23,7 +35,7 @@
     // ├─────────┼─────────┼─────────┼─────────┼─────────┤    ├─────────┼─────────┼─────────┼─────────┼─────────┤
         &kp R     &kp S     &kp T     &kp H     &kp K          &kp J     &kp N     &kp E     &kp A     &kp I    
     // ├─────────┼─────────┼─────────┼─────────┼─────────┤    ├─────────┼─────────┼─────────┼─────────┼─────────┤
-        &kp X     &kp C     &kp M     &kp P     &kp V          &kp DOT   &sk LCMD  &sk LSHFT &kp ESC   &kp Z    
+        &kp X     &kp C     &kp M     &kp P     &kp V          &kp DOT   &sk LCMD  &skq LSHFT &kp ESC   &kp Z    
     // ╰─────────┴─────────┴─────────┼─────────┼─────────┤    ├─────────┼─────────┼─────────┼─────────┼─────────╯
                             &sk LCTRL &kp SPACE &sl RED        &sl BLUE  &kp BSPC  &kp ENTER
     //                     ╰─────────┴─────────┴─────────╯    ╰─────────┴─────────┴─────────╯
